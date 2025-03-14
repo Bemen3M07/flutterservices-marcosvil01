@@ -6,7 +6,7 @@ import 'car_model.dart';
 class CarDetailPage extends StatelessWidget {
   final CarsModel car;
 
-  const CarDetailPage({Key? key, required this.car}) : super(key: key);
+  const CarDetailPage({super.key, required this.car});
 
   @override
   Widget build(BuildContext context) {

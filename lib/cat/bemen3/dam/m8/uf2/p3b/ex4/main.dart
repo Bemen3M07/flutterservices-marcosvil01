@@ -10,6 +10,8 @@ void main() {
 
 /// Widget arrel de l'aplicació.
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
 
 /// Widget de la pàgina principal que mostra un acudit.
 class JokePage extends StatefulWidget {
+  const JokePage({super.key});
+
   @override
   _JokePageState createState() => _JokePageState();
 }
@@ -50,7 +54,7 @@ class _JokePageState extends State<JokePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Acudits'),
+        title: const Text('Acudits'),
       ),
       body: Center(
         // Utilitzem FutureBuilder per a gestionar l'estat de la petició.
@@ -59,7 +63,7 @@ class _JokePageState extends State<JokePage> {
           builder: (context, snapshot) {
             // Mentre s'espera la resposta mostrem un indicador de càrrega.
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator();
+              return const CircularProgressIndicator();
             } else if (snapshot.hasError) {
               // En cas d'error, mostrem el missatge corresponent.
               return Text('Error: ${snapshot.error}');
@@ -73,27 +77,27 @@ class _JokePageState extends State<JokePage> {
                     Text(
                       snapshot.data!.setup,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20),
+                      style: const TextStyle(fontSize: 20),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     Text(
                       snapshot.data!.punchline,
                       textAlign: TextAlign.center,
                       style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                          const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),
               );
             }
-            return Text('No s\'ha trobat cap acudit.');
+            return const Text('No s\'ha trobat cap acudit.');
           },
         ),
       ),
       // Botó flotant que en carregarà un de nou quan es premi.
       floatingActionButton: FloatingActionButton(
         onPressed: _loadJoke,
-        child: Icon(Icons.refresh),
+        child: const Icon(Icons.refresh),
       ),
     );
   }
